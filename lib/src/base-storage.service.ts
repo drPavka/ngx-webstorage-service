@@ -1,6 +1,6 @@
-import { StorageService } from './storage.service';
-import { StorageDecoder, StorageEncoder, StorageTranscoder } from './storage-transcoder';
-import { ProxyStorageService } from './proxy-storage.service';
+import {StorageService} from './storage.service';
+import {StorageDecoder, StorageEncoder, StorageTranscoder} from './storage-transcoder';
+import {ProxyStorageService} from './proxy-storage.service';
 
 /**
  * Base implementation for storage services.
@@ -61,6 +61,14 @@ export abstract class BaseStorageService<T> implements StorageService<T> {
      * @param key Identifier of the entry which is to be removed.
      */
     public abstract remove(key: string): void;
+
+    /**
+     * Alias for remove method
+     * @param key Identifier of the entry which is to be removed.
+     */
+    public removeItem(key: string): void {
+        this.remove(key);
+    };
 
     /**
      * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set

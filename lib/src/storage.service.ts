@@ -69,6 +69,13 @@ export interface StorageService<T = any> {
     remove(key: string): void;
 
     /**
+     * Alias for remove - added to be compliant with localstorage API
+     * @param key Identifier of the entry which is to be removed.
+     */
+    removeItem(key: string): void;
+
+
+    /**
      * Clears the storage by removing all entries. Subsequent `get(x)` calls for a key *x* will return `undefined`, until a new value is set
      * for key *x*.
      */

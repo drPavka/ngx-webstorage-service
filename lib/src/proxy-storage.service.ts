@@ -1,5 +1,5 @@
-import { StorageService } from './storage.service';
-import { StorageTranscoder, StorageDecoder, StorageEncoder } from './storage-transcoder';
+import {StorageService} from './storage.service';
+import {StorageTranscoder, StorageDecoder, StorageEncoder} from './storage-transcoder';
 
 /**
  * A storage service implementation that is used as a proxy for another storage service. This is used to create storage services with a
@@ -17,7 +17,8 @@ export class ProxyStorageService<T> implements StorageService<T> {
     constructor(
         private readonly defaultTranscoder: StorageTranscoder<T>,
         private readonly subject: StorageService
-    ) { }
+    ) {
+    }
 
     /**
      * Checks whether an entry with the specified key exists in the storage.
@@ -66,6 +67,10 @@ export class ProxyStorageService<T> implements StorageService<T> {
      */
     public remove(key: string): void {
         this.subject.remove(key);
+    }
+
+    public removeItem(key: string) {
+        this.remove(key);
     }
 
     /**
